@@ -1,0 +1,245 @@
+:root{
+	--texts-color: #F9FCB5;
+	--badge-color: #53CEB8;
+	--texts-transition-color: #1E5C71;
+	--button-bg: #D2691E;
+	--facebook-bg: #0676E8;
+	--selector-color: #FA8E8E;
+}
+
+*{
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+@font-face{
+	font-family: "Monserrat Bold";
+	src: url("../Fonts/Montserrat/Montserrat-Black.ttf") format("truetype");
+}
+
+@font-face{
+	font-family: "Monserrat";
+	src: url("../Fonts/Montserrat/Montserrat-Bold.ttf") format("truetype");
+}
+
+
+body{
+	background-image: url("../img/space.jpg");
+	background-position: center center;
+	background-attachment: fixed;
+	background-size: cover;
+	font-size: 16px;
+}
+
+/* ----- Header ----- */
+
+header{
+	width: 95%;
+	margin: 1em auto;
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-between;
+	font-family: "Monserrat";
+	margin-bottom: 3.125em;
+}
+
+#badge{
+	width: 220px;
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-between;
+	align-items: center;
+}
+
+#badge i{
+	color: var(--badge-color);
+	font-size: 2.8125em;
+	margin-right: 1rem;
+}
+
+#badge h1{
+	color: var(--texts-color);
+	font-size: 1.875em;
+}
+
+#menu{
+	width: 18.75em;
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-around;
+	align-items: center;
+}
+
+#menu a{
+	color: var(--texts-color);
+	font-size: 1.375em;
+	text-decoration: none;
+	transition: all 0.3s;
+}
+
+#menu a:hover{
+	transform: scale(1.1);
+	color: var(--texts-transition-color);
+}
+
+/* main section */
+
+#principal{
+	width: 97%;
+	margin: 1em auto;
+}
+
+#principal h2{
+	color: var(--texts-color);
+	font-size: 2em;
+	font-family: "Trebuchet MS";
+	padding-bottom: 20px;
+	border-bottom: 1px solid #ccc;
+	text-align: center;
+	margin-bottom: 0.5rem;
+}
+
+.tasks-lists{
+	width: 100%;
+	height: auto;
+	padding: 5px;
+	font-family: "Trebuchet MS";
+	color: var(--texts-color);
+	font-weight: 500;
+}
+
+hr{
+	color: #ccc;
+}
+
+.title-task{
+	font-size: 1.3em;
+	padding: 0.5em;
+}
+
+.tasks-container{
+	width: 100%;
+	height: auto;
+	display: flex;
+	margin: 1em 0;
+	flex-flow: column wrap;
+	justify-content: center;
+	align-items: flex-end;
+}
+
+.tasks-cards{
+	/*width: 1410px;
+	height: 175px;*/
+	width: 96%;
+	height: 10.94em;
+	background-color: rgba(14, 11, 20, 0.5);
+	box-shadow: 0px 1px 5px #333;
+	border-radius: 10px;
+	margin: 1em 0;
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.info-container{
+	display: flex;
+	flex-flow: column wrap;
+}
+
+.task-title{
+	font-size: 1.2em;
+	color: var(--badge-color);
+}
+
+.info-container p{
+	padding: 15px;
+}
+
+.info-container p:nth-child(2),
+.info-container p:nth-child(3){
+	text-indent: 1em;
+}
+#options{
+	margin-right: 3%;
+}
+
+#options .fas{
+	font-size: 2em;
+	cursor: pointer;
+	margin: 0 1em;
+	color: var(--badge-color);
+}
+
+#options .trash,
+#options .check{
+	transition: all 0.2s;
+}
+
+#options .trash:hover,
+#options .check:hover{
+	color: var(--selector-color);
+}
+
+
+
+/* ----- Footer ----- */
+
+#footer{
+	width: 100%;
+	position: absolute; 
+	bottom: 0;
+	display: flex;
+	padding: 1em;
+	flex-flow: column wrap;
+	justify-content: center;
+	align-items: center;
+	background-color: #333;
+}
+
+#footer p::selection,
+#footer span::selection,
+#icons::selection{
+	color: blue;
+	background-color: var(--selector-color);
+}
+
+#footer p{
+	color: var(--texts-color);
+	font-size: 1em;
+	font-family: "Monserrat";
+}
+
+p > span{
+	color: var(--selector-color);
+}
+
+#icons{
+	margin: 0.25em;
+	font-size: 2em;
+}
+
+.links{
+	transition: all 0.2s;
+}
+
+.fab:hover{
+	color: var(--selector-color);
+}
+
+#icons a:nth-child(1){
+	color: #fff;
+}
+
+#icons a:nth-child(2){
+	color: var(--facebook-bg);
+}
+
+
+
+
+
+
+
+
