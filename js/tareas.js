@@ -51,7 +51,30 @@ function showTask(json, num){
 		footer.style.position = "relative";
 	}
 	
-	templateShow = `
+	if(json.title.endsWith(".")){
+		templateShow = `
+		<div class="tasks-cards">
+          <div class="info-container">
+              <p class="task-title">
+                  ${json.title}
+              </p>
+              <p class="task-desc">
+                  ${json.description}
+              </p>
+              <p class="task-date">
+                  ${json.date}
+              </p>
+          </div>
+          <figure id="options">
+              <p>
+				  <i class="fas fa-trash-alt trash" title="Eliminar tarea" onclick="deleteTask(this)" id="del"></i>
+              </p>
+          </figure>
+         </div>
+	`;
+	doneContainer.innerHTML += templateShow;
+	}else{
+		templateShow = `
 		<div class="tasks-cards">
           <div class="info-container">
               <p class="task-title">
@@ -72,14 +95,54 @@ function showTask(json, num){
           </figure>
          </div>
 	`;
+		toDoContainer.innerHTML += templateShow;
+	}
+		
 	
-	toDoContainer.innerHTML += templateShow;
 }
+
+
 
 function addToDone(element){
 	var task = element.parentNode.parentNode.parentNode;
 	element.remove();
+	var title = task.querySelector(".task-title").textContent.trim();
 	doneContainer.appendChild(task);
+	if(findTask(title)){
+		recreateTask(title);
+	}
+}
+
+function findTask(title){
+	for(var i in localStorage){
+		if(typeof localStorage[i] == "string"){
+			json = parseJSON(localStorage[i]);
+			if(title == json.title){
+				return true;
+			}
+		}
+	}
+}
+
+function parseJSON(element){
+	return JSON.parse(element);
+}
+
+function recreateTask(title){
+	var temp = JSON.parse(localStorage.getItem(title));
+	json = recreateJSON(temp);
+	localStorage.setItem(json.title, JSON.stringify(json));
+	localStorage.removeItem(title);
+}
+
+function recreateJSON(json){
+	var JSON = {
+		title: json.title+".",
+		description: json.description,
+		date: json.date
+	};
+	
+	return JSON;
 }
 
 function deleteTask(element){

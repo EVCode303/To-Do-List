@@ -1,0 +1,22 @@
+@media screen and (max-width: 780px){
+	body{
+		font-size: 14px;
+	}
+	
+	header{
+		flex-flow: column wrap;
+		align-items: center;
+		justify-content: space-between;
+	}
+	
+	#menu{
+		margin-top: 25px;
+		width: 80%;
+		justify-content: space-around;
+	}
+	
+	#menu a{
+		flex: 1 1 auto;
+		text-align: center;
+	}
+}
