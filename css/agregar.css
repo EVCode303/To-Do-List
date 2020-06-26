@@ -30,6 +30,9 @@ body{
 	background-attachment: fixed;
 	background-size: cover;
 	font-size: 16px;
+	display: flex;
+	flex-wrap: wrap;
+	min-height: 100vh;
 }
 
 /* ----- Header ----- */
@@ -38,6 +41,7 @@ header{
 	width: 95%;
 	margin: 1em auto;
 	display: flex;
+	align-self: flex-start;
 	flex-flow: row wrap;
 	justify-content: space-between;
 	font-family: "Monserrat";
@@ -88,9 +92,15 @@ header{
 #principal{
 	width: 97%;
 	margin: 1em auto;
+	display: flex;
+	flex-flow: column wrap;
+	justify-content: space-between;
+	align-items: center;
+	font-size: 1em;
 }
 
 #principal h2{
+	width: 97%;
 	color: var(--texts-color);
 	font-size: 2em;
 	font-family: "Trebuchet MS";
@@ -204,8 +214,7 @@ button:hover p{
 	flex-flow: column wrap;
 	justify-content: center;
 	align-items: center;
-	position: absolute;
-	bottom: 0;
+	align-self: flex-end;
 	background-color: #333;
 }
 

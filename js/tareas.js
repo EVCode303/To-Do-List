@@ -1,9 +1,8 @@
 'use strict';
 
-var tasksContainer, footer;
+var tasksContainer;
 var toDoContainer, doneContainer;
 var json, templateShow;
-var c;
 var btnDel, btnCheck;
 
 window.addEventListener("load", function(){
@@ -28,29 +27,20 @@ function initEvents(){
 }
 
 function readRegister(){
-	footer = document.querySelector("#footer");
-	
 	tasksContainer = document.getElementsByClassName("tasks-container");
 	
 	toDoContainer = tasksContainer[0];
 	doneContainer = tasksContainer[1];
 	
-	c = 0;
 	for(var i in localStorage){
 		if(typeof localStorage[i] == "string"){
 			json = JSON.parse(localStorage[i]);
-			showTask(json, c);
-			c++;
+			showTask(json);
 		}
 	}
 }
 
-function showTask(json, num){
-	
-	if(num >= 1){
-		footer.style.position = "relative";
-	}
-	
+function showTask(json){	
 	if(json.title.endsWith(".")){
 		templateShow = `
 		<div class="tasks-cards">
@@ -73,6 +63,7 @@ function showTask(json, num){
          </div>
 	`;
 	doneContainer.innerHTML += templateShow;
+		
 	}else{
 		templateShow = `
 		<div class="tasks-cards">
@@ -105,12 +96,13 @@ function showTask(json, num){
 
 function addToDone(element){
 	var task = element.parentNode.parentNode.parentNode;
-	element.remove();
 	var title = task.querySelector(".task-title").textContent.trim();
-	doneContainer.appendChild(task);
 	if(findTask(title)){
 		recreateTask(title);
 	}
+	task.querySelector(".task-title").innerHTML = title+".";
+	doneContainer.appendChild(task);
+	element.remove();
 }
 
 function findTask(title){
@@ -150,9 +142,5 @@ function deleteTask(element){
 	var title = task.querySelector(".task-title").textContent;
 	localStorage.removeItem(title.trim());
 	task.remove();
-	c--;
-	if(c <= 1){
-		footer.style.position = "absolute";
-	}
 }
 
